@@ -1,38 +1,7 @@
-import { SignIn, SignUp, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
-import {
-  createStyles,
-  Header,
-  HoverCard,
-  Group,
-  Button,
-  UnstyledButton,
-  Text,
-  SimpleGrid,
-  ThemeIcon,
-  Anchor,
-  Divider,
-  Center,
-  Box,
-  Burger,
-  Drawer,
-  Collapse,
-  ScrollArea,
-  rem,
-  Modal,
-  Dialog,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import {
-  IconNotification,
-  IconCode,
-  IconBook,
-  IconChartPie3,
-  IconFingerprint,
-  IconCoin,
-  IconChevronDown,
-} from '@tabler/icons-react';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { createStyles, Header, Group, Button, Box, rem } from '@mantine/core';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import RecipeGptLogo from '../Logo/RecipeGptLogo';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -94,70 +63,69 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const mockdata = [
-  {
-    icon: IconCode,
-    title: 'Open source',
-    description: 'This Pokémon’s cry is very loud and distracting',
-  },
-  {
-    icon: IconCoin,
-    title: 'Free for everyone',
-    description: 'The fluid of Smeargle’s tail secretions changes',
-  },
-  {
-    icon: IconBook,
-    title: 'Documentation',
-    description: 'Yanma is capable of seeing 360 degrees without',
-  },
-  {
-    icon: IconFingerprint,
-    title: 'Security',
-    description: 'The shell’s rounded shape and the grooves on its.',
-  },
-  {
-    icon: IconChartPie3,
-    title: 'Analytics',
-    description: 'This Pokémon uses its flying ability to quickly chase',
-  },
-  {
-    icon: IconNotification,
-    title: 'Notifications',
-    description: 'Combusken battles with the intensely hot flames it spews',
-  },
-];
+// const mockdata = [
+//   {
+//     icon: IconCode,
+//     title: 'Open source',
+//     description: 'This Pokémon’s cry is very loud and distracting',
+//   },
+//   {
+//     icon: IconCoin,
+//     title: 'Free for everyone',
+//     description: 'The fluid of Smeargle’s tail secretions changes',
+//   },
+//   {
+//     icon: IconBook,
+//     title: 'Documentation',
+//     description: 'Yanma is capable of seeing 360 degrees without',
+//   },
+//   {
+//     icon: IconFingerprint,
+//     title: 'Security',
+//     description: 'The shell’s rounded shape and the grooves on its.',
+//   },
+//   {
+//     icon: IconChartPie3,
+//     title: 'Analytics',
+//     description: 'This Pokémon uses its flying ability to quickly chase',
+//   },
+//   {
+//     icon: IconNotification,
+//     title: 'Notifications',
+//     description: 'Combusken battles with the intensely hot flames it spews',
+//   },
+// ];
 
 export function HeaderMegaMenu() {
-  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
-  const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  const { classes, theme } = useStyles();
+  // const [drawerOpened, { toggle: toggleDrawer }] = useDisclosure(false);
+  const { classes } = useStyles();
   const router = useRouter();
 
-  const links = mockdata.map((item) => (
-    <UnstyledButton className={classes.subLink} key={item.title}>
-      <Group noWrap align="flex-start">
-        <ThemeIcon size={34} variant="default" radius="md">
-          <item.icon size={rem(22)} color={theme.fn.primaryColor()} />
-        </ThemeIcon>
-        <div>
-          <Text size="sm" fw={500}>
-            {item.title}
-          </Text>
-          <Text size="xs" color="dimmed">
-            {item.description}
-          </Text>
-        </div>
-      </Group>
-    </UnstyledButton>
-  ));
+  // const links = mockdata.map((item) => (
+  //   <UnstyledButton className={classes.subLink} key={item.title}>
+  //     <Group noWrap align="flex-start">
+  //       <ThemeIcon size={34} variant="default" radius="md">
+  //         <item.icon size={rem(22)} color={theme.fn.primaryColor()} />
+  //       </ThemeIcon>
+  //       <div>
+  //         <Text size="sm" fw={500}>
+  //           {item.title}
+  //         </Text>
+  //         <Text size="xs" color="dimmed">
+  //           {item.description}
+  //         </Text>
+  //       </div>
+  //     </Group>
+  //   </UnstyledButton>
+  // ));
 
   return (
-    <Box pb={120}>
-      <Header height={60} px="md">
+    <Box pb={120} pl="xl" pr="xl">
+      <Header height={60} px="md" pl="xl" pr="xl">
         <Group position="apart" sx={{ height: '100%' }}>
-          <Text>Recipe GPT</Text>
+          <RecipeGptLogo />
 
-          <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
+          {/* <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
             <a href="#" className={classes.link}>
               Home
             </a>
@@ -212,7 +180,7 @@ export function HeaderMegaMenu() {
             <a href="#" className={classes.link}>
               Academy
             </a>
-          </Group>
+          </Group> */}
 
           <SignedIn>
             <UserButton />
@@ -226,11 +194,11 @@ export function HeaderMegaMenu() {
             </Group>
           </SignedOut>
 
-          <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} />
+          {/* <Burger opened={drawerOpened} onClick={toggleDrawer} className={classes.hiddenDesktop} /> */}
         </Group>
       </Header>
 
-      <Drawer
+      {/* <Drawer
         opened={drawerOpened}
         onClose={closeDrawer}
         size="100%"
@@ -273,7 +241,7 @@ export function HeaderMegaMenu() {
             </Group>
           </SignedOut>
         </ScrollArea>
-      </Drawer>
+      </Drawer> */}
     </Box>
   );
 }

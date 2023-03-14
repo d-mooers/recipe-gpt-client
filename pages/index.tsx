@@ -1,11 +1,12 @@
-import { Welcome } from '../components/Welcome/Welcome';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
+import { Container } from '@mantine/core';
+import { LandingPageHero } from '../components/Hero/Hero';
+import { CardsCarousel } from '../components/Carousel/Carousel';
 
 export default function HomePage() {
   return (
-    <>
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
+    <Container>
+      <LandingPageHero />
+      <CardsCarousel />
+    </Container>
   );
 }
